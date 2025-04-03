@@ -16,9 +16,11 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white">
+            
+            <!-- Incluye la barra de navegación -->
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
+            <!-- Encabezado de la página (si está definido) -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -27,9 +29,9 @@
                 </header>
             @endif
 
-            <!-- Page Content -->
+            <!-- Contenido de la página -->
             <main>
-                @yield('content')
+                @yield('content') <!-- Sección donde se insertará el contenido de cada página -->
             </main>
         </div>
     </body>
