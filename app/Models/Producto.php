@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 /**
  * Clase Producto
@@ -23,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Producto extends Model
 {
+    use HasFactory;
     /**
      * Número de elementos por página para la paginación.
      *
