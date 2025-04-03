@@ -32,15 +32,29 @@ class ProductoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
+ * Almacena un nuevo producto en la base de datos
+ * @function store
+ * @param {ProductosRequest} request - Datos validados del producto
+ * @returns {RedirectResponse} Redirección a la lista de productos con mensaje flash
+ * @success {string} success - Mensaje de éxito: "Producto creado exitosamente."
+ * @error {string} error - Mensaje de error: "Hubo un problema al crear el producto: [mensaje de error]"
+ * // Redirige a productos.index con mensaje flash
+ **/
     public function store(ProductosRequest $request)
     {
+    try {
+        // Intentar crear el producto
         Producto::create($request->validated());
 
         return redirect()->route('productos.index')
-            ->with('success', 'Producto created successfully.');
+            ->with('success', 'Producto creado exitosamente.');
+    } catch (\Exception $e) {
+        // Capturar cualquier error y mostrar un mensaje
+        return redirect()->route('productos.index')
+            ->with('error', 'Hubo un problema al crear el producto: ' . $e->getMessage());
     }
+}
+
 
     /**
      * Display the specified resource.
