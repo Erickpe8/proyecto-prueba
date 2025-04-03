@@ -46,7 +46,12 @@ class ProductoController extends Controller
     public function store(ProductosRequest $request)
     {
         try {
-            Producto::create($request->validated());
+            $producto = new Producto();
+            $producto->name = $request->input('name');
+            $producto->descripcion = $request->input(key: 'descripcion');
+            $producto->precio = $request->input(key: 'precio');
+            $producto->stock = $request->input(key: 'stock');
+            $producto->save(); // Guardar en la base de dato
 
             return redirect()->route('productos.index')
                 ->with('success', 'Producto creado exitosamente.');
