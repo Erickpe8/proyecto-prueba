@@ -1,0 +1,4 @@
+<p align="center"><a href="https://github.com/Erickpe8" target="_blank"><img src="https://sdmntprwestus.oaiusercontent.com/files/00000000-f1e8-5230-8d13-91f38e867cf0/raw?se=2025-04-04T22%3A28%3A03Z&sp=r&sv=2024-08-04&sr=b&scid=5e994f25-f59f-5a33-af58-07ed8be51b4c&skoid=b53ae837-f585-4db7-b46f-2d0322fce5a9&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-04T09%3A09%3A28Z&ske=2025-04-05T09%3A09%3A28Z&sks=b&skv=2024-08-04&sig=InuN1m6SiijQAWOJ%2Bjk8jiGkdPtGNppMBfFBV3xd1aM%3D" width="400" alt="Imagen de como configure"></a></p>
+
+## Colaboradores
+Como colaborador en el CRUD, estoy trabajando de la mano con el ingeniero Manuel, quien me está enseñando a usar Laravel. Con su ayuda, voy aprendiendo poco a poco para luego poder sumarme de lleno al desarrollo del software de los congresos en la FESC.
