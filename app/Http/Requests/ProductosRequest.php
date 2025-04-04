@@ -26,6 +26,8 @@ class ProductosRequest extends FormRequest
             'descripcion' => 'required|string|max:500',
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+
         ];
     }
     public function messages(): array
@@ -46,6 +48,11 @@ class ProductosRequest extends FormRequest
             'stock.required' => 'El stock es obligatorio.',
             'stock.integer' => 'El stock debe ser un número entero.',
             'stock.min' => 'El stock no puede ser negativo.',
+
+            'image.image' => 'El archivo debe ser una imagen.',
+            'image.mimes' => 'La imagen debe ser de tipo: jpg, jpeg o png.',
+            'image.max' => 'La imagen no debe superar los 2MB de tamaño.',
+
         ];
     }
 
@@ -59,6 +66,7 @@ class ProductosRequest extends FormRequest
             'descripcion' => 'descripción',
             'precio' => 'precio',
             'stock' => 'stock',
+            'image' => 'image',
         ];
     }
 }

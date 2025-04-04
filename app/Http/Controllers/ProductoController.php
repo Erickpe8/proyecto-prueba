@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use App\Http\Requests\ProductosRequest;
+use Illuminate\Http\Request;
 
 /**
  * @class ProductoController
@@ -16,9 +17,11 @@ class ProductoController extends Controller
      * @description Muestra una lista paginada de productos
      * @returns {View} Vista con la lista de productos
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productos = Producto::paginate();
+        $productos = Producto::when($request->search, function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        })->paginate(100);
 
         return view('producto.index', compact('productos'))
             ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
@@ -48,10 +51,18 @@ class ProductoController extends Controller
         try {
             $producto = new Producto();
             $producto->name = $request->input('name');
-            $producto->descripcion = $request->input(key: 'descripcion');
-            $producto->precio = $request->input(key: 'precio');
-            $producto->stock = $request->input(key: 'stock');
-            $producto->save(); // Guardar en la base de dato
+            $producto->descripcion = $request->input('descripcion');
+            $producto->precio = $request->input('precio');
+            $producto->stock = $request->input('stock');
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $imageName);
+                $producto->image = $imageName;
+            }
+
+            $producto->save();
 
             return redirect()->route('productos.index')
                 ->with('success', 'Producto creado exitosamente.');
@@ -69,8 +80,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        $producto = Producto::find($id);
-
+        $producto = Producto::findOrFail($id);
         return view('producto.show', compact('producto'));
     }
 
@@ -82,8 +92,7 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        $producto = Producto::find($id);
-
+        $producto = Producto::findOrFail($id);
         return view('producto.edit', compact('producto'));
     }
 
@@ -97,10 +106,14 @@ class ProductoController extends Controller
      */
     public function update(ProductosRequest $request, Producto $producto)
     {
-        $producto->update($request->validated());
-
-        return redirect()->route('productos.index')
-            ->with('success', 'Producto actualizado exitosamente.');
+        try {
+            $producto->update($request->validated());
+            return redirect()->route('productos.index')
+                ->with('success', 'Producto actualizado exitosamente.');
+        } catch (\Exception $e) {
+            return redirect()->route('productos.index')
+                ->with('error', 'Error al actualizar el producto: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -112,9 +125,13 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        Producto::find($id)->delete();
-
-        return redirect()->route('productos.index')
-            ->with('success', 'Producto eliminado exitosamente.');
+        try {
+            Producto::findOrFail($id)->delete();
+            return redirect()->route('productos.index')
+                ->with('success', 'Producto eliminado exitosamente.');
+        } catch (\Exception $e) {
+            return redirect()->route('productos.index')
+                ->with('error', 'Error al eliminar el producto: ' . $e->getMessage());
+        }
     }
 }

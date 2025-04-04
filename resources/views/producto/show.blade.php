@@ -23,23 +23,37 @@
 
                     <div class="card-body bg-white">
                         {{-- Sección para mostrar la información del producto --}}
+                    
                         <div class="form-group mb-2 mb20">
                             <strong>Name:</strong>
                             {{ $producto->name }}
                         </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Descripcion:</strong>
+                    
+                        <div class="form-group mb-2 mb20"> 
+                            <strong>Descripción:</strong>
                             {{ $producto->descripcion }}
                         </div>
+                    
                         <div class="form-group mb-2 mb20">
                             <strong>Precio:</strong>
-                            {{ $producto->precio }}
+                            ${{ $producto->precio }}
                         </div>
+                    
                         <div class="form-group mb-2 mb20">
                             <strong>Stock:</strong>
                             {{ $producto->stock }}
                         </div>
+                    
+                        <div class="form-group mb-2 mb20">
+                            <strong>Imagen:</strong><br>
+                            @if ($producto->image)
+                                <img src="{{ asset('images/' . $producto->image) }}" alt="Imagen del producto" width="150" class="img-thumbnail mt-2">
+                            @else
+                                <p class="text-muted">Sin imagen</p>
+                            @endif
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
