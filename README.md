@@ -14,7 +14,7 @@ Una vez finalizado el login, creé una nueva rama llamada "CRUD", donde desarrol
 - Como servidor web use [Apache](https://httpd.apache.org/download.cgi).
 - Por entorno de ejecución de JavaScript utilice [Node.js](https://nodejs.org/es/blog/release/v18.0.0).
 - El lenguaje usado fue [PHP 8.1](https://www.php.net/releases/8.1/en.php).
-- Para la documentación de las funciones use [https://jsdoc.app/]
+- Para la documentación de las funciones use [JSDOC](https://jsdoc.app/)
 
 Un proyecto facil de entender, desarrollar y practicar.
 
