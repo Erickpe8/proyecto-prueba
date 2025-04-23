@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\contact;
 
 use Illuminate\Http\Request;
 
@@ -23,16 +24,30 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
+    {     
+        // return $request->mensaje;
+            $Contact = new Contact();
+            $Contact->Nombre = $request->name;
+            $Contact->Correo_Electronico = $request->email;
+            $Contact->Mensaje = $request->message;
+    
+            $Contact->save(); 
+
+            $respuesta=[
+                'mensaje'=>'envio respuesta del backend',
+                'status'=>200
+            ];
+
+            return response()->json($respuesta);
+    
+}
 
     /**
      * Display the specified resource.
