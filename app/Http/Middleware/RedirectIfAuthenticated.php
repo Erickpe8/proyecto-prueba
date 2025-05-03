@@ -8,12 +8,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Middleware para redirigir a los usuarios autenticados.
+ *
+ * Este middleware verifica si un usuario ya está autenticado en alguno de los
+ * guardias especificados. Si es así, lo redirige a la página de inicio definida
+ * en `RouteServiceProvider::HOME`. En caso contrario, permite que la solicitud
+ * continúe su curso normal.
+ *
+ * @package App\Http\Middleware
+ */
 class RedirectIfAuthenticated
 {
     /**
-     * Handle an incoming request.
+     * Maneja una solicitud entrante.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request  La solicitud HTTP actual.
+     * @param  \Closure  $next  La siguiente acción en la cadena de middleware.
+     * @param  string  ...$guards  Los guardias de autenticación a comprobar.
+     * @return \Symfony\Component\HttpFoundation\Response  La respuesta HTTP resultante.
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
