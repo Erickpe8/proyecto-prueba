@@ -18,9 +18,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// ✅ Solo administradores pueden acceder a 'productos'
+// Solo administradores pueden acceder a 'productos'
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('productos', ProductoController::class);
 });
-
+ 
 require __DIR__.'/auth.php';
