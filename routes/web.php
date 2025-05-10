@@ -36,6 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('productos', ProductoController::class);
+});
+
 // Se incluye el archivo de rutas de autenticación generadas por Laravel Breeze, Jetstream u otro paquete de autenticación
 require __DIR__.'/auth.php';
 
