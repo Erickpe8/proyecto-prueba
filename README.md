@@ -1,4 +1,3 @@
-<p align="center"><a href="https://github.com/Erickpe8" target="_blank"><img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-5d3c-51f7-901e-503f3a84db07/raw?se=2025-04-04T15%3A40%3A24Z&sp=r&sv=2024-08-04&sr=b&scid=3b1c68e1-95b5-5868-8bcb-c71b30cb370c&skoid=365eb242-95ba-4335-a618-2c9f8f766a86&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-04T10%3A52%3A35Z&ske=2025-04-05T10%3A52%3A35Z&sks=b&skv=2024-08-04&sig=cgSw4z6sla5lHxKPMws6Gzh4mk4wOHobF6yJ7sh1tL0%3D" width="400" alt="Imagen de como configure"></a></p>
 
 ## ¿Como cree el repositorio?
 Creé el repositorio desde GitHub con el nombre proyecto-prueba, estableciendo como rama principal "Master". Luego, generé la rama "Auth" para implementar un login con autenticación, base de datos y registro de usuarios. Después de cada cambio importante, preparé los archivos para hacer el commit, dejando constancia mediante comentarios de lo que se había realizado.
